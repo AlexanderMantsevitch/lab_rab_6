@@ -17,14 +17,15 @@ public class Main extends JFrame {
 
         setLocation((kit.getScreenSize().width - WIDTH)/2,
                 (kit.getScreenSize().height - HEIGHT)/2);
-
+        setExtendedState(MAXIMIZED_BOTH);
         JMenuBar menu = new JMenuBar();
         setJMenuBar(menu);
         JMenu balls = new JMenu ("Мячи");
         JMenu control = new JMenu("Управление");
         menu.add (balls); menu.add (control);
 
-        getContentPane().add(field);
+
+        getContentPane().add(field, BorderLayout.CENTER);
 
     }
 

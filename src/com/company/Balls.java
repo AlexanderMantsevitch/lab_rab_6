@@ -9,8 +9,8 @@ public class Balls implements Runnable {
     private Field field;
     private Color color;
     private int Radius;
-    private int MaxRadius = 35;
-    private int MinRadius = 2;
+    private int MaxRadius = 50;
+    private int MinRadius = 6;
 
     private double MaxSpeed = 14;
 
@@ -22,8 +22,9 @@ public class Balls implements Runnable {
     private double speedX;
     private double speedY;
 
-    public Balls ()
+    public Balls (Field fieldOther)
     {
+        field = fieldOther;
         Radius = (int)(Math.random()* (MaxRadius - MinRadius )) + MinRadius;
         speed = Math.round(7 * MaxSpeed/Radius);
         if ( speed > MaxSpeed) {speed = MaxSpeed; }
@@ -31,8 +32,9 @@ public class Balls implements Runnable {
         speedX = speed * Math.cos(ange);
         speedY = speed * Math.sin(ange);
         color = new Color ( (float) Math.random(), (float)Math.random(),(float)Math.random());
-        x =  (Math.random() * (field.getWidth() - 2 * Radius )) + Radius;
-        x =  (Math.random() * (field.getHeight() - 2 * Radius )) + Radius;
+
+        x =  (Math.random() * (field.getSize().getWidth() - 2 * Radius )) + Radius;
+        y =  (Math.random() * (field.getSize().getHeight() - 2 * Radius )) + Radius;
 
         Thread NewThread = new Thread(this);
         NewThread.start();

@@ -22,7 +22,7 @@ public class Field extends JPanel {
     }
 
 
-    private Timer repaintTime = new Timer(10, new ActionListener() {
+    private Timer repaintTime = new Timer(4, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
            repaint();
@@ -35,8 +35,19 @@ public class Field extends JPanel {
 
     public Field ()
     {
+        setSize(getToolkit().getScreenSize());
         setBackground(Color.white);
         repaintTime.start();
+        balls.add(new Balls(this));
+        balls.add(new Balls(this));
+        balls.add(new Balls(this));
+
+    }
+
+    public void addBall ()
+    {
+
+        balls.add(new Balls(this));
 
     }
 
