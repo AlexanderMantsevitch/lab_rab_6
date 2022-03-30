@@ -7,6 +7,7 @@ public class Main extends JFrame {
 
     private static final int WIDTH = 700;
     private static final int HEIGHT = 500;
+    private Field field = new Field ();
 
     Main()
     {
@@ -23,7 +24,7 @@ public class Main extends JFrame {
         JMenu control = new JMenu("Управление");
         menu.add (balls); menu.add (control);
 
-
+        getContentPane().add(field);
 
     }
 

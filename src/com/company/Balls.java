@@ -1,6 +1,7 @@
 package com.company;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class Balls implements Runnable {
 
@@ -31,6 +32,14 @@ public class Balls implements Runnable {
 
 
     }
+    }
+    public void paint (Graphics2D field)
+    {
+        field.setColor(color);
+        field.setPaint(color);
+        Ellipse2D.Double ball = new Ellipse2D.Double(x, y, 2*Radius, 2*Radius);
+        field.draw (ball);
+        field.fill (ball);
     }
 
 }

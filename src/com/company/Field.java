@@ -12,12 +12,12 @@ public class Field extends JPanel {
 
     private ArrayList<Balls> balls = new ArrayList<Balls>(3);
     public void paintComponent(Graphics g) {
-// Вызвать версию метода, унаследованную от предка
+
         super.paintComponent(g);
         Graphics2D canvas = (Graphics2D) g;
-// Последовательно запросить прорисовку от всех мячей из списка
-        for (Balls ball: balls) {
 
+        for (Balls ball: balls) {
+            ball.paint(canvas);
         }
     }
 
