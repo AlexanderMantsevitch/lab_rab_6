@@ -10,15 +10,15 @@ public class Balls implements Runnable {
     private Color color;
     private int Radius;
     private int MaxRadius = 50;
-    private int MinRadius = 6;
+    private int MinRadius = 10;
 
-    private double MaxSpeed = 14;
+    private int MaxSpeed = 14;
 
 
     private double x;
     private double y;
 
-    private double speed;
+    private int speed;
     private double speedX;
     private double speedY;
 
@@ -33,8 +33,8 @@ public class Balls implements Runnable {
         speedY = speed * Math.sin(ange);
         color = new Color ( (float) Math.random(), (float)Math.random(),(float)Math.random());
 
-        x =  (Math.random() * (field.getSize().getWidth() - 2 * Radius )) + Radius;
-        y =  (Math.random() * (field.getSize().getHeight() - 2 * Radius )) + Radius;
+        x =  (Math.random() * (field.getSize().getWidth() - 2 * Radius )) ;
+        y =  (Math.random() * (field.getSize().getHeight() - 2 * Radius )) ;
 
         Thread NewThread = new Thread(this);
         NewThread.start();
@@ -47,9 +47,24 @@ public class Balls implements Runnable {
         while (true)
         {
             field.canMove(this);
-
-
-
+            if ( (x + speedX) <= 0)
+            { speedX = -speedX; x = 0; }
+            else if (x + speedX >= field.getWidth()-2*Radius)
+            {
+                speedX = -speedX;
+                x= field.getWidth()-2*Radius;
+            }
+            else if (y + speedY <= 0)
+            {
+                speedY = -speedY; y = 0;
+            }
+            else if (y + speedY >= field.getHeight() - 2*Radius)
+            {
+                speedY = -speedY;
+                y= field.getHeight() - 2*Radius;
+            }
+            else { x+= speedX; y+= speedY; }
+            Thread.sleep(MaxSpeed+ 1 - speed);
         }
 
 
