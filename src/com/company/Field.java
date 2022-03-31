@@ -38,9 +38,7 @@ public class Field extends JPanel {
         setSize(getToolkit().getScreenSize());
         setBackground(Color.white);
         repaintTime.start();
-        balls.add(new Balls(this));
-        balls.add(new Balls(this));
-        balls.add(new Balls(this));
+
 
     }
 
@@ -58,6 +56,7 @@ public class Field extends JPanel {
     public synchronized void resume() {
 // Включить режим паузы
         paused = false;
+        notifyAll();
     }
     public synchronized void canMove(Balls ball) throws
             InterruptedException {
